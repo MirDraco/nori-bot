@@ -2,14 +2,18 @@
 
 // .env 파일에서 환경 변수를 로드합니다.
 require('dotenv').config();
-const { Client, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 
-// config.json에서 token을 가져오는 줄을 삭제합니다.
-// const { token } = require('./config.json'); -> 이 줄 삭제
+const dadJokes = require('./jokes.js');
 
 const client = new Client({ intents: [
     GatewayIntentBits.Guilds
 ]});
+// 아재개그를 랜덤으로 선택하는 함수 정의
+function getRandomDadJoke() {
+    const randomIndex = Math.floor(Math.random() * dadJokes.length);
+    return dadJokes[randomIndex];
+}
 
 client.once(Events.ClientReady, readyClient => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
@@ -71,7 +75,20 @@ client.on(Events.InteractionCreate, async interaction => {
             },
     };
         await interaction.reply({ embeds : [embed] });
-    }; 
+    }
+
+     else if (interaction.commandName === '아재개그') {
+        const randomJoke = getRandomDadJoke();
+        
+        const embed = new EmbedBuilder()
+            .setColor(0xffff00)
+            .setTitle('🤣 아재개그')
+            .setDescription(randomJoke)
+            .setFooter({ text: '재미있다면 ㅋㅋㅋ, 재미없다면... 그래도 ㅋㅋㅋ' })
+            .setTimestamp();
+        
+        await interaction.reply({ embeds: [embed] });
+    }
 });
 
 // 환경 변수에서 직접 토큰을 가져와 봇에 로그인합니다.

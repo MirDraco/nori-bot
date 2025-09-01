@@ -16,7 +16,10 @@ const commands = [
         .setDescription('현재 시간을 표시합니다.'),
     new SlashCommandBuilder()
         .setName('내정보')
-        .setDescription('사용자의 정보를 표시합니다.')
+        .setDescription('사용자의 정보를 표시합니다.'),
+    new SlashCommandBuilder()
+        .setName('아재개그')
+        .setDescription('아재개그를 하나 보여줍니다.'),
 ];
 
 const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
