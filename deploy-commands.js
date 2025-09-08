@@ -21,19 +21,19 @@ const commands = [
         .setName('아재개그')
         .setDescription('아재개그를 하나 보여줍니다.'),
     new SlashCommandBuilder()
-        .setName('gemini')
-        .setDescription('Gemini AI에게 질문합니다.')
+        .setName('잼민이')
+        .setDescription('잼민이 AI에게 질문합니다.')
         .addStringOption(option =>
             option.setName('질문')
-                .setDescription('Gemini에게 할 질문을 입력하세요')
+                .setDescription('잼민이에게 할 질문을 입력하세요')
                 .setRequired(true)
         ),
     new SlashCommandBuilder()
-        .setName('gemini대화')
-        .setDescription('Gemini AI와 대화를 시작합니다.')
+        .setName('잼민이대화')
+        .setDescription('잼민이 AI와 대화를 시작합니다.')
         .addStringOption(option =>
             option.setName('메시지')
-                .setDescription('Gemini에게 보낼 메시지를 입력하세요')
+                .setDescription('잼민이에게 보낼 메시지를 입력하세요')
                 .setRequired(true)
         )
 ];

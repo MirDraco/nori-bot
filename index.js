@@ -165,12 +165,12 @@ client.on(Events.InteractionCreate, async interaction => {
             .setColor(0xffff00)
             .setTitle('🤣 아재개그')
             .setDescription(randomJoke)
-            .setFooter({ text: '재미있다면 ㅋㅋㅋ, 재미없다면... 그래도 ㅋㅋㅋ' })
+            .setFooter({ text: '메롱' })
             .setTimestamp();
         
         await interaction.reply({ embeds: [embed] });
     }
-    else if (interaction.commandName === 'gemini') {
+    else if (interaction.commandName === '잼민이') {
         const question = interaction.options.getString('질문');
         
         // 응답 지연을 알려주는 메시지
@@ -183,7 +183,7 @@ client.on(Events.InteractionCreate, async interaction => {
         
         const embed = new EmbedBuilder()
             .setColor(0x4285f4)
-            .setTitle('🍋🐉 Gemini AI 답변')
+            .setTitle('🍋🐉 잼민이 AI 답변')
             .setDescription(chunks[0])
             .setFooter({ text: `질문자: ${interaction.user.displayName}` })
             .setTimestamp();
@@ -199,7 +199,7 @@ client.on(Events.InteractionCreate, async interaction => {
             await interaction.followUp({ embeds: [followUpEmbed] });
         }
     }
-    else if (interaction.commandName === 'gemini대화초기화') {
+    else if (interaction.commandName === '잼민이대화초기화') {
         const userId = interaction.user.id;
         
         if (chatSessions.has(userId)) {
@@ -214,7 +214,7 @@ client.on(Events.InteractionCreate, async interaction => {
             const embed = new EmbedBuilder()
                 .setColor(0xff9900)
                 .setTitle('🔄 대화 초기화 완료')
-                .setDescription('Gemini와의 대화 기록이 초기화되었습니다.\n이제 새로운 대화를 시작할 수 있습니다!')
+                .setDescription('잼민이와의 대화 기록이 초기화되었습니다.\n이제 새로운 대화를 시작할 수 있습니다!')
                 .setFooter({ text: `요청자: ${interaction.user.displayName}` })
                 .setTimestamp();
             
@@ -223,14 +223,14 @@ client.on(Events.InteractionCreate, async interaction => {
             const embed = new EmbedBuilder()
                 .setColor(0x999999)
                 .setTitle('ℹ️ 초기화할 대화가 없습니다')
-                .setDescription('현재 진행 중인 Gemini 대화가 없습니다.')
+                .setDescription('현재 진행 중인 잼민이 대화가 없습니다.')
                 .setFooter({ text: `요청자: ${interaction.user.displayName}` })
                 .setTimestamp();
             
             await interaction.reply({ embeds: [embed], ephemeral: true });
         }
     }
-    else if (interaction.commandName === 'gemini대화') {
+    else if (interaction.commandName === '잼민이대화') {
         const message = interaction.options.getString('메시지');
         const userId = interaction.user.id;
         
@@ -244,7 +244,7 @@ client.on(Events.InteractionCreate, async interaction => {
         
         const embed = new EmbedBuilder()
             .setColor(0x34a853)
-            .setTitle('💬 Gemini 대화')
+            .setTitle('💬 잼민이 대화')
             .setDescription(chunks[0])
             .addFields(
                 { name: '💭 당신의 메시지', value: message.length > 100 ? message.substring(0, 100) + '...' : message }
